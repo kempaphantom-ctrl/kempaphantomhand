@@ -1,0 +1,199 @@
+<style>
+    .league-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 20px 0;
+    }
+    .league-table {
+        width: 100%;
+        min-width: 700px; /* テーブル全体の最小幅をここに指定 */
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 0.85rem;
+        border: 2px solid #1a365d;
+        background-color: white;
+        table-layout: fixed; /* 列の幅を固定・均等にするための設定 */
+    }
+    .league-table th, 
+    .league-table td {
+        padding: 10px;
+        border: 1px solid #cbd5e0;
+        word-break: break-all;
+    }
+    .league-table thead tr {
+        background-color: #1a365d;
+        color: white;
+    }
+    
+    /* 各列の横幅バランスを調整 */
+    .league-table th.col-team { width: 100px; } /* チーム名列 */
+    .league-table th.col-vs { width: auto; }    /* 対戦チーム列（残りの幅を均等に分ける） */
+    .league-table th.col-pts { width: 60px; background-color: #2b6cb0; } /* 勝点列 */
+    
+    .league-table td.row-team {
+        font-weight: bold;
+        background-color: #f7fafc;
+    }
+    .league-table td.cell-blank {
+        background-color: #a0aec0;
+    }
+    .league-table td.cell-pts {
+        font-weight: bold;
+        background-color: #edf2f7;
+    }
+    .league-table .score {
+        font-size: 0.75rem;
+        color: #718096;
+        display: block;
+        margin-top: 2px;
+    }
+</style>
+
+<div class="league-table-container">
+    <table class="league-table">
+        <thead>
+            <tr>
+                <th class="col-team">チーム名</th>
+                <th class="col-vs">三光</th>
+                <th class="col-vs">弓ヶ浜</th>
+                <th class="col-vs">境港</th>
+                <th class="col-vs">はんど</th>
+                <th class="col-vs">島根大</th>
+                <th class="col-vs">環境大</th>
+                <th class="col-vs">米子高</th>
+                <th class="col-pts">勝点</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td class="row-team">三光</td>
+                <!-- vs 三光-->
+                <td class="cell-blank">-</td>
+                <!-- vs 弓ヶ浜-->
+                <td></td>
+                <!-- vs 境港-->
+                <td></td>
+                <!-- vs はんど-->
+                <td></td>
+                <!-- vs 島根大-->
+                <td></td>
+                <!-- vs 環境大-->
+                <td></td>
+                <!-- vs 米子高専-->
+                <td></td>
+                <!--勝ち点-->
+                <td class="cell-pts">0</td>
+            </tr>
+            <tr>
+                <td class="row-team">弓ヶ浜</td>
+                <!-- vs 三光-->
+                <td></td>
+                <!-- vs 弓ヶ浜-->
+                <td class="cell-blank">-</td>
+                <!-- vs 境港-->
+                <td></td>
+                <!-- vs はんど-->
+                <td></td>
+                <!-- vs 島根大-->
+                <td></td>
+                <!-- vs 環境大-->
+                <td></td>
+                <!-- vs 米子高専-->
+                <td></td>
+                <td class="cell-pts">0</td>
+            </tr>
+            <tr>
+                <td class="row-team">境港</td>
+                <!-- vs 三光-->
+                <td></td>
+                <!-- vs 弓ヶ浜-->
+                <td></td>
+                <!-- vs 境港-->
+                <td class="cell-blank">-</td>
+                <!-- vs はんど-->
+                <td></td>
+                <!-- vs 島根大-->
+                <td></td>
+                <!-- vs 環境大-->
+                <td>〇<span class="score">27-13</span></td>
+                <!-- vs 米子高専-->
+                <td></td>
+                <td class="cell-pts">3</td>
+            </tr>
+            <tr>
+                <td class="row-team">はんど</td>
+                <!-- vs 三光-->
+                <td></td>
+                <!-- vs 弓ヶ浜-->
+                <td></td>
+                <!-- vs 境港-->
+                <td></td>
+                <!-- vs はんど-->
+                <td class="cell-blank">-</td>
+                <td></td>
+                <!-- vs 島根大-->
+                <td></td>
+                <!-- vs 環境大-->
+                <td></td>
+                <!-- vs 米子高専-->
+                <td class="cell-pts">0</td>
+            </tr>
+            <tr>
+                <td class="row-team">島根大</td>
+                <!-- vs 三光-->                
+                <td></td>
+                <!-- vs 弓ヶ浜-->
+                <td></td>
+                <!-- vs 境港-->
+                <td></td>
+                <!-- vs はんど-->
+                <td></td>
+                <!-- vs 島根大-->
+                <td class="cell-blank">-</td>
+                <!-- vs 環境大-->
+                <td></td>
+                <!-- vs 米子高専-->
+                <td></td>
+
+                <td class="cell-pts">0</td>
+            </tr>
+            <tr>
+                <td class="row-team">環境大</td>
+                <!-- vs 三光-->
+                <td></td>
+                <!-- vs 弓ヶ浜-->
+                <td></td>
+                <!-- vs 境港-->
+                <td>●<span class="score">13-27</span></td>
+                <!-- vs はんど-->
+                <td></td>
+                <!-- vs 島根大-->
+                <td></td>
+                <!-- vs 環境大-->
+                <td class="cell-blank">-</td>
+                <!-- vs 米子高専-->
+                <td></td>
+                <td class="cell-pts">0</td>
+            </tr>
+            <tr>
+                <td class="row-team">米子高</td>
+                <!-- vs 三光-->
+                <td></td>
+                <!-- vs 弓ヶ浜-->
+                <td></td>
+                <!-- vs 境港-->
+                <td></td>
+                <!-- vs はんど-->
+                <td></td>
+                <!-- vs 島根大-->
+                <td></td>
+                <!-- vs 環境大-->
+                <td></td>
+                <!-- vs 米子高専-->
+                <td class="cell-blank">-</td>
+                <td class="cell-pts">0</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -31,21 +31,6 @@
         <p>鳥取のハンドボール日本海リーグを勝手に解析・応援するファンサイト</p>
     </header>
 
-<!--
-    <section id="greeting" style="background-color: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <h2 style="border-left: 5px solid #1a365d; padding-left: 10px; margin-top: 0; color: #1a365d;">こんにちは、kempa（ケンパ）です</h2>
-        <p style="margin: 10px 0 0 0; font-size: 0.95rem; line-height: 1.6;">
-            鳥取のハンドボール界、特に「日本海リーグ」が大好きで追いかけているのですが、<strong>あまりにもネット上に日程や結果の情報が無さすぎる…！</strong>と感じ、それなら自分で作ってしまえ！と、このファンサイトを立ち上げました。
-        </p>
-        <p style="margin: 10px 0 0 0; font-size: 0.95rem; line-height: 1.6;">
-            当面は「勝手にリーグ解析」をテーマに、手元のスプレッドシートでガシガシ星取表や順位を勝手に計算して公開していく予定です。将来的には、高校ハンドやジュニアなど、鳥取のハンドボール情報をまるっと見られるポータルサイトに育てていけたらいいな、なんて野望も抱いています。
-        </p>
-        <p style="margin: 10px 0 0 0; font-size: 0.95rem; line-height: 1.6; font-weight: bold; color: #2c5282;">
-            ただ、個人で運営しているため、私一人の力では情報が全く足りません。ぜひ皆様と一緒に、このサイトを盛り上げていきたいです。どうぞよろしくお願いします！
-        </p>
-    </section>
--->
-
     <section id="info-request" style="background-color: #fffaf0; border: 2px solid #dd6b20; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
         <h2 style="color: #dd6b20; border-left: 5px solid #dd6b20; margin-top: 0; font-size: 1.3rem;">📢 試合結果の情報提供・間違い指摘を募集しています</h2>
         <p style="margin: 10px 0 15px 0; font-size: 0.95rem; line-height: 1.6;">
@@ -99,15 +84,26 @@
                 </li>
             </ul>
         </section>
-<!--
-        <section id="standings">
-            <h2>📊 星取表・順位表</h2>
-            <div class="iframe-container">
-                <iframe src="https://docs.google.com/spreadsheets/d/e/XXXXXX/pubhtml?widget=true&amp;headers=false"></iframe>
-            </div>
-            <p style="font-size: 0.8rem; color: #666; text-align: right; margin-top: 5px;">※数値は試合終了後に自動更新されます</p>
+
+        <!--成績表-->
+        <section style="background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: #1a365d; border-left: 5px solid #1a365d; padding-left: 10px; margin-top: 0; font-size: 1.3rem;">📊 リーグ戦 成績表</h2>
+            <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 15px;">※左側のチームから見た結果です。〇：勝ち / ●：負け / △：引き分け（横スクロール可）</p>
+            
+            <div id="matrix-container">データを読み込み中...</div>
         </section>
--->
+
+        <script>
+            fetch('standings.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('matrix-container').innerHTML = data;
+                })
+                .catch(error => {
+                    document.getElementById('matrix-container').innerHTML = '<p style="color:red;">星取表の読み込みに失敗しました。</p>';
+                });
+        </script>
+
         <section id="schedule">
             <h2>📅 試合日程（全6節）</h2>
             <div style="margin-top: 40px; margin-bottom: 5px; font-size: 0.85rem; color: #e63946; font-weight: bold;">
@@ -210,5 +206,6 @@
             </div>
 
         </div>
+    </div>
 </body>
 </html>
