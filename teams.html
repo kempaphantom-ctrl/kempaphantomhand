@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チーム情報 - 勝手にハンド</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; color: #333; max-width: 800px; margin: 0 auto; }
+        h1 { font-size: clamp(1.2rem, 5.5vw, 2.5rem); text-align: center; margin-bottom: 30px; }
+        
+        /* 💡 スマホでもパソコンでも綺麗に格子状に並ぶボタンメニュー */
+        .team-menu { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); /* スマホは2列 */
+            gap: 10px; 
+            padding: 0; 
+            list-style: none; 
+            margin-bottom: 40px;
+        }
+
+        /* パソコンなどの広い画面では4列にする */
+        @media (min-width: 600px) {
+            .team-menu { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .team-menu a { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center;
+            padding: 12px 8px; 
+            background-color: #f0f0f0; 
+            color: #333; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-size: 0.85rem; 
+            font-weight: bold;
+            border: 1px solid #ccc; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .team-menu a:hover { background-color: #007bff; color: white; border-color: #007bff; }
+        
+        /* 各チーム紹介カードのスタイル */
+        .team-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 30px; background-color: #fafafa; scroll-margin-top: 20px; }
+        .team-card h2 { margin-top: 0; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px; font-size: 1.3rem; }
+        .team-tag { display: inline-block; padding: 2px 8px; background-color: #e0e0e0; font-size: 0.8rem; border-radius: 4px; margin-bottom: 10px; font-weight: bold; }
+        
+        .back-link { display: block; text-align: center; margin-top: 40px; text-decoration: none; color: #007bff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>チーム情報一覧</h1>
+
+    <ul class="team-menu">
+        <li><a href="#sanko">三光ハンドボール部</a></li>
+        <li><a href="#yumigahama">弓ヶ浜クラブ</a></li>
+        <li><a href="#sakaiminato">境港クラブ</a></li>
+        <li><a href="#handcream">はんどくり～む</a></li>
+        <li><a href="#shimadai">島根大学</a></li>
+        <li><a href="#kankyo">公立鳥取環境大学</a></li>
+        <li><a href="#yonago-kosen">米子高専</a></li>
+    </ul>
+
+    <div id="sanko" class="team-card">
+        <h2>三光ハンドボール部</h2>
+        <span class="team-tag" style="background-color: #ffe6e6; color: #cc0000;">地元企業</span>
+        <p>紹介文をここに書きます。（例：仕事とハンドボールを両立して活動しています！）</p>
+    </div>
+
+    <div id="yumigahama" class="team-card">
+        <h2>弓ヶ浜クラブ</h2>
+        <span class="team-tag" style="background-color: #e6f2ff; color: #0066cc;">社会人</span>
+        <p>紹介文をここに書きます。</p>
+    </div>
+
+    <div id="sakaiminato" class="team-card">
+        <h2>境港クラブ</h2>
+        <span class="team-tag" style="background-color: #e6f2ff; color: #0066cc;">社会人</span>
+        <p>紹介文をここに書きます。</p>
+    </div>
+
+    <div id="handcream" class="team-card">
+        <h2>はんどくり～む</h2>
+        <span class="team-tag" style="background-color: #e6f2ff; color: #0066cc;">社会人</span>
+        <p>紹介文をここに書きます。</p>
+    </div>
+
+    <div id="shimadai" class="team-card">
+        <h2>島根大学（島大ハンド部）</h2>
+        <span class="team-tag" style="background-color: #e6ffe6; color: #008000;">大学</span>
+        <p>紹介文をここに書きます。</p>
+    </div>
+
+    <div id="kankyo" class="team-card">
+        <h2>公立鳥取環境大学（環境大ハンド部）</h2>
+        <span class="team-tag" style="background-color: #e6ffe6; color: #008000;">大学</span>
+        <p>紹介文をここに書きます。</p>
+    </div>
+
+    <div id="yonago-kosen" class="team-card">
+        <h2>米子高専（米子工業高等専門学校）</h2>
+        <span class="team-tag" style="background-color: #fff2e6; color: #cc6600;">高専</span>
+        <p>紹介文をここに書きます。</p>
+    </div>
+
+    <a href="index.html" class="back-link">← トップページに戻る</a>
+
+</body>
+</html>
