@@ -3,102 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>チーム情報 - 勝手にハンド</title>
+    <title>チーム情報一覧 〜日本海リーグ〜</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; color: #333; max-width: 800px; margin: 0 auto; }
-        h1 { font-size: clamp(1.2rem, 5.5vw, 2.5rem); text-align: center; margin-bottom: 30px; }
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #1a365d; color: #fff; padding: 20px; text-align: center; }
+        h1 { margin: 0; font-size: 1.8rem; }
+        .back-home { margin-top: 10px; }
+        .back-home a { color: #fff; text-decoration: underline; font-size: 0.9rem; }
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
         
-        /* 💡 スマホでもパソコンでも綺麗に格子状に並ぶボタンメニュー */
-        .team-menu { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* スマホは2列 */
-            gap: 10px; 
-            padding: 0; 
-            list-style: none; 
-            margin-bottom: 40px;
-        }
-
-        /* パソコンなどの広い画面では4列にする */
-        @media (min-width: 600px) {
-            .team-menu { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .team-menu a { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center;
-            padding: 12px 8px; 
-            background-color: #f0f0f0; 
-            color: #333; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-size: 0.85rem; 
-            font-weight: bold;
-            border: 1px solid #ccc; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: 0.2s;
-        }
-        .team-menu a:hover { background-color: #007bff; color: white; border-color: #007bff; }
+        /* チームカードのスタイル */
+        .team-card { background: #fff; padding: 25px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 5px solid #1a365d; }
+        .team-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .team-name { font-size: 1.4rem; font-weight: bold; color: #1a365d; margin: 0; }
         
-        /* 各チーム紹介カードのスタイル */
-        .team-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 30px; background-color: #fafafa; scroll-margin-top: 20px; }
-        .team-card h2 { margin-top: 0; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px; font-size: 1.3rem; }
-        .team-tag { display: inline-block; padding: 2px 8px; background-color: #e0e0e0; font-size: 0.8rem; border-radius: 4px; margin-bottom: 10px; font-weight: bold; }
+        /* 属性バッジ */
+        .badge { font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; font-weight: bold; }
+        .badge-company { color: #cc0000; background: #ffe6e6; }
+        .badge-society { color: #0066cc; background: #e6f2ff; }
+        .badge-univ { color: #008000; background: #e6ffe6; }
+        .badge-kosen { color: #cc6600; background: #fff2e6; }
         
-        .back-link { display: block; text-align: center; margin-top: 40px; text-decoration: none; color: #007bff; font-weight: bold; }
+        /* プロフィールテーブル */
+        .profile-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .profile-table th, .profile-table td { padding: 8px 10px; text-align: left; font-size: 0.95rem; border-bottom: 1px dashed #e2e8f0; }
+        .profile-table th { width: 90px; color: #666; font-weight: normal; }
+        
+        /* 選手リスト（今後の拡張用） */
+        .player-box { background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .player-title { font-size: 0.95rem; font-weight: bold; color: #4a5568; margin-top: 0; margin-bottom: 8px; }
+        .player-list { margin: 0; padding-left: 20px; font-size: 0.9rem; color: #4a5568; }
     </style>
 </head>
 <body>
 
-    <h1>チーム情報一覧</h1>
+    <header>
+        <h1>🏃‍♂️ チーム情報・選手一覧</h1>
+        <div class="back-home"><a href="index.html">← トップページに戻る</a></div>
+    </header>
 
-    <ul class="team-menu">
-        <li><a href="#sanko">三光ハンドボール部</a></li>
-        <li><a href="#yumigahama">弓ヶ浜クラブ</a></li>
-        <li><a href="#sakaiminato">境港クラブ</a></li>
-        <li><a href="#handcream">はんどくり～む</a></li>
-        <li><a href="#shimadai">島根大学</a></li>
-        <li><a href="#kankyo">公立鳥取環境大学</a></li>
-        <li><a href="#yonago-kosen">米子高専</a></li>
-    </ul>
+    <div class="container">
 
-    <div id="sanko" class="team-card">
-        <h2>三光ハンドボール部</h2>
-        <p>紹介文をここに書きます。（例：仕事とハンドボールを両立して活動しています！）</p>
+        <div class="team-card" id="sanko">
+            <div class="team-header">
+                <h2 class="team-name">三光ハンドボール部</h2>
+                <span class="badge badge-company">地元企業</span>
+            </div>
+            <table class="profile-table">
+                <tr><th>拠点</th><td>鳥取県境港市</td></tr>
+                <tr><th>紹介</th><td>環境マネジメントを行う地元企業「三光株式会社」の企業チーム。2022年7月に本格始動し、2023年の第44回日本海リーグから初参戦したフレッシュなチームです。工場勤務や営業、技術部門など様々な部署の垣根を越えたメンバー（20代〜50代）が集まって活動しており、未経験から始めて活躍している社員も在籍しています。</td></tr>
+            </table>
+            <div class="player-box">
+                <p class="player-title">👥 注目選手・メンバー名鑑</p>
+                <ul class="player-list">
+                    <li>情報募集中（選手名や背番号、ポジションなど、現地の情報をお待ちしております！）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="team-card" id="yumigahama">
+            <div class="team-header">
+                <h2 class="team-name">弓ヶ浜クラブ</h2>
+                <span class="badge badge-society">社会人クラブ</span>
+            </div>
+            <table class="profile-table">
+                <tr><th>拠点</th><td>鳥取県米子市周辺</td></tr>
+                <tr><th>紹介</th><td>米子・弓ヶ浜エリアを拠点に長年活動を続けている、日本海リーグのトップを走る実力派の社会人クラブチーム。過去の大会でも全勝争いや優勝争いに常に絡む、リーグ内でも誰もが認める高い壁であり強豪チームです。</td></tr>
+            </table>
+            <div class="player-box">
+                <p class="player-title">👥 注目選手・メンバー名鑑</p>
+                <ul class="player-list">
+                    <li>情報募集中</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="team-card" id="sakaiminato">
+            <div class="team-header">
+                <h2 class="team-name">境港クラブ</h2>
+                <span class="badge badge-society">社会人クラブ</span>
+            </div>
+            <table class="profile-table">
+                <tr><th>拠点</th><td>鳥取県境港市</td></tr>
+                <tr><th>紹介</th><td>リーグの主要会場でもある「境港市民第二体育館」など、境港市を中心に活動する伝統ある社会人チーム（過去には『境港クラブNEO』などのチーム名でもリーグを盛り上げています）。地元のハンドボール経験者が集まり、泥臭く熱いプレーを見せてくれます。</td></tr>
+            </table>
+            <div class="player-box">
+                <p class="player-title">👥 注目選手・メンバー名鑑</p>
+                <ul class="player-list">
+                    <li>情報募集中</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="team-card" id="handcream">
+            <div class="team-header">
+                <h2 class="team-name">はんどくり〜む</h2>
+                <span class="badge badge-society">社会人クラブ</span>
+            </div>
+            <table class="profile-table">
+                <tr><th>拠点</th><td>鳥取県内</td></tr>
+                <tr><th>紹介</th><td>日本海リーグに籍を置く社会人クラブチーム。チーム名の親しみやすさとは裏腹に、一般社会人・学生チームを相手にタフなゲームを展開する、リーグには欠かせない個性派クラブチームの一つです。</td></tr>
+            </table>
+            <div class="player-box">
+                <p class="player-title">👥 注目選手・メンバー名鑑</p>
+                <ul class="player-list">
+                    <li>情報募集中</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="team-card" id="shimadai">
+            <div class="team-header">
+                <h2 class="team-name">島根大学（島大ハンド部）</h2>
+                <span class="badge badge-univ">大学</span>
+            </div>
+            <table class="profile-table">
+                <tr><th>拠点</th><td>島根県松江市</td></tr>
+                <tr><th>紹介</th><td>島根大学の男子ハンドボール部。中四国学生ハンドボール連盟に所属しながら、この日本海リーグにも遠征・参戦しています。若い大学生ならではの走力と豊富な運動量を武器に、県境を越えて一般の社会人強豪チームに牙をむく存在です。</td></tr>
+            </table>
+            <div class="player-box">
+                <p class="player-title">👥 注目選手・メンバー名鑑</p>
+                <ul class="player-list">
+                    <li>情報募集中</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="team-card" id="kankyo">
+            <div class="team-header">
+                <h2 class="team-name">公立鳥取環境大学（環境大ハンド部）</h2>
+                <span class="badge badge-univ">大学</span>
+            </div>
+            <table class="profile-table">
+                <tr><th>拠点</th><td>鳥取県鳥取市</td></tr>
+                <tr><th>紹介</th><td>鳥取市にキャンパスを構える公立鳥取環境大学のハンドボール部。学業やサークル活動と両立しながら日本海リーグを盛り上げる、県東部からの貴重な学生チーム。一戦ごとにチームとして急成長していくポテンシャルを持っています。</td></tr>
+            </table>
+            <div class="player-box">
+                <p class="player-title">👥 注目選手・メンバー名鑑</p>
+                <ul class="player-list">
+                    <li>情報募集中</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="team-card" id="yonago-kosen">
+            <div class="team-header">
+                <h2 class="team-name">米子高専（米子工業高等専門学校）</h2>
+                <span class="badge badge-kosen">高専</span>
+            </div>
+            <table class="profile-table">
+                <tr><th>拠点</th><td>鳥取県米子市</td></tr>
+                <tr><th>紹介</th><td>米子工業高等専門学校のハンドボール部。第一体育館や屋外の専用コートなどで日々練習に励んでいます。このチームの最大の強みは「多くの熱いOBたちに支えられていること」。試合当日の盛大な応援やOBからの的確なアドバイスを受けて、大人の社会人チームに真っ向勝負を挑みます。</td></tr>
+            </table>
+            <div class="player-box">
+                <p class="player-title">👥 注目選手・メンバー名鑑</p>
+                <ul class="player-list">
+                    <li>情報募集中</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
 
-    <div id="yumigahama" class="team-card">
-        <h2>弓ヶ浜クラブ</h2>
-        <p>紹介文をここに書きます。</p>
+    
+    <div style="text-align: center; margin: 40px 0 60px 0; padding: 0 15px;">
+        <a href="index.html" style="display: inline-block; padding: 14px 28px; background-color: #1a365d; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 6px rgba(26,54,93,0.2);">
+            🏠 トップページに戻る
+        </a>
     </div>
-
-    <div id="sakaiminato" class="team-card">
-        <h2>境港クラブ</h2>
-        <p>紹介文をここに書きます。</p>
-    </div>
-
-    <div id="handcream" class="team-card">
-        <h2>はんどくり～む</h2>
-        <p>紹介文をここに書きます。</p>
-    </div>
-
-    <div id="shimadai" class="team-card">
-        <h2>島根大学（島大ハンド部）</h2>
-        <p>紹介文をここに書きます。</p>
-    </div>
-
-    <div id="kankyo" class="team-card">
-        <h2>公立鳥取環境大学（環境大ハンド部）</h2>
-        <p>紹介文をここに書きます。</p>
-    </div>
-
-    <div id="yonago-kosen" class="team-card">
-        <h2>米子高専（米子工業高等専門学校）</h2>
-        <p>紹介文をここに書きます。</p>
-    </div>
-
-    <a href="index.html" class="back-link">← トップページに戻る</a>
 
 </body>
 </html>
