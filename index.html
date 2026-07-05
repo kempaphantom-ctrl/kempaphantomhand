@@ -22,6 +22,49 @@
         .match-list li { padding: 10px; border-bottom: 1px solid #ddd; }
         .match-list li:last-child { border: none; }
         .match-badge { display: inline-block; padding: 2px 6px; background: #e2e8f0; border-radius: 4px; font-size: 0.8rem; }
+
+        /* 問い合わせセクション全体のスタイル */
+        .contact-section {
+            background-color: #f7fafc;
+            border-top: 1px solid #cbd5e0;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact-title {
+            font-size: 1.25rem;
+            color: #1a365d;
+            margin-bottom: 15px;
+        }
+        .contact-text {
+            font-size: 0.9rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* お問い合わせボタン */
+        .contact-btn-wrap {
+            margin-bottom: 10px;
+        }
+        .contact-btn {
+            display: inline-block;
+            background-color: #1a365d;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: background-color 0.2s;
+        }
+        .contact-btn:hover {
+            background-color: #2b6cb0; /* ホバー時に少し明るい青に */
+        }
     </style>
 </head>
 <body>
@@ -207,5 +250,25 @@
 
         </div>
     </div>
+
+    <!-- フッター -->
+    <section id="page-contact" class="contact-section">
+        <div class="contact-container">
+
+            <h2 class="contact-title">お問い合わせ</h2>
+
+            <p class="contact-text">
+                当サイトや関するご意見・ご質問、または掲載内容に誤りがある場合は、<br>
+                下記のメールよりご連絡をお願いいたします。
+            </p>
+
+            <div class="contact-btn-wrap">
+                <a href="mailto:kempa.phantom@gmail.com?subject=【勝手にハンド〜日本海リーグ〜】お問い合わせ" class="contact-btn">
+                    ✉ kempa.phantom@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
