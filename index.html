@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勝手にハンド 〜日本海リーグ〜</title>
+    <style>
+        /* 簡単なスタイル（必要に応じてCSSファイルに切り出してください） */
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #1a365d; color: #fff; padding: 20px; text-align: center; }
+        h1 { margin: 0; font-size: 1.8rem; }
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        section { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { border-left: 5px solid #1a365d; padding-left: 10px; margin-top: 0; color: #1a365d; }
+        
+        /* スプレッドシート埋め込み用（スマホでもはみ出さないレスポンシブ対応） */
+        .iframe-container { position: relative; width: 100%; overflow: auto; -webkit-overflow-scrolling: touch; }
+        iframe { width: 100%; height: 450px; border: none; }
+        
+        /* リストやテーブルの簡易スタイル */
+        .match-list, .team-list { list-style: none; padding: 0; }
+        .match-list li { padding: 10px; border-bottom: 1px solid #ddd; }
+        .match-list li:last-child { border: none; }
+        .match-badge { display: inline-block; padding: 2px 6px; background: #e2e8f0; border-radius: 4px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>勝手にハンド 〜日本海リーグ〜</h1>
+        <p>鳥取のハンドボール日本海リーグを勝手に解析・応援するファンサイト</p>
+    </header>
+
+    <section id="greeting" style="background-color: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h2 style="border-left: 5px solid #1a365d; padding-left: 10px; margin-top: 0; color: #1a365d;">こんにちは、kempa（ケンパ）です</h2>
+        <p style="margin: 10px 0 0 0; font-size: 0.95rem; line-height: 1.6;">
+            鳥取のハンドボール界、特に「日本海リーグ」が大好きで追いかけているのですが、<strong>あまりにもネット上に日程や結果の情報が無さすぎる…！</strong>と感じ、それなら自分で作ってしまえ！と、このファンサイトを立ち上げました。
+        </p>
+        <p style="margin: 10px 0 0 0; font-size: 0.95rem; line-height: 1.6;">
+            当面は「勝手にリーグ解析」をテーマに、手元のスプレッドシートでガシガシ星取表や順位を勝手に計算して公開していく予定です。将来的には、高校ハンドやジュニアなど、鳥取のハンドボール情報をまるっと見られるポータルサイトに育てていけたらいいな、なんて野望も抱いています。
+        </p>
+        <p style="margin: 10px 0 0 0; font-size: 0.95rem; line-height: 1.6; font-weight: bold; color: #2c5282;">
+            ただ、個人で運営しているため、私一人の力では情報が全く足りません。ぜひ皆様と一緒に、このサイトを盛り上げていきたいです。どうぞよろしくお願いします！
+        </p>
+    </section>
+
+    <section id="info-request" style="background-color: #fffaf0; border: 2px solid #dd6b20; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+        <h2 style="color: #dd6b20; border-left: 5px solid #dd6b20; margin-top: 0; font-size: 1.3rem;">📢 【急募】第1節（7/5）の試合結果・スコア募集！</h2>
+        <p style="margin: 10px 0 15px 0; font-size: 0.95rem; line-height: 1.5;">
+            本日開催された「第1節」の試合結果（勝敗やスコア、戦評など）をご存知の方、ぜひ情報をお寄せください！<br>
+            公式の記録が少ないため、現地の選手・関係者・ファンの皆様の「見たよ！」という情報だけが頼りです。一部の試合だけでも大歓迎です。
+        </p>
+        <div style="background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0; text-align: center;">
+            <span style="font-weight: bold; font-size: 0.9rem; color: #4a5568;">情報提供はこちらまで：</span><br>
+            <a href="mailto:kempa.phantom@gmail.com?subject=日本海リーグ情報提供" style="font-size: 1.1rem; color: #3182ce; font-weight: bold; text-decoration: underline;">
+                kempa.phantom@gmail.com
+            </a>
+        </div>
+        <p style="font-size: 0.8rem; color: #718096; margin: 10px 0 0 0; text-align: center;">
+            ※上のメールアドレスをクリックするとメールが立ち上がります。
+        </p>
+    </section>
+
+    <div class="container">
+
+        <section id="schedule">
+            <h2>📅 次節の日程</h2>
+            <div id="section2" style="margin-bottom: 20px; border-bottom: 2px dashed #ddd; padding-bottom: 10px;">
+                <h3 style="font-size: 1.1rem; color: #2c5282;">▽ 第2節（9月6日）</h3>
+                <ul class="match-list">
+                    <li><span class="match-badge">09:45</span> はんどくり〜む — 島根大学</li>
+                    <li><span class="match-badge">11:00</span> 三光 — 弓ヶ浜クラブ</li>
+                    <li><span class="match-badge">12:15</span> 鳥取環境大学 — 米子高専</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="results">
+            <h2>🏆 試合結果（直近）</h2>
+            <ul class="match-list">
+                <li>
+                    <span class="match-badge">7月5日(日) 終了</span><br>
+                    弓ヶ浜クラブ <span style="font-size: 1.2rem; font-weight: bold;">?? - ??</span> 島根大学
+                </li>
+                <li>
+                    <span class="match-badge">7月5日(日) 終了</span><br>
+                    三光 <span style="font-size: 1.2rem; font-weight: bold;">?? - ??</span> 米子高専
+                </li>
+                                <li>
+                    <span class="match-badge">7月5日(日) 終了</span><br>
+                    境港クラブ <span style="font-size: 1.2rem; font-weight: bold;">?? - ??</span> 鳥取環境大学
+                </li>
+                <li>
+                    <span class="match-badge">7月5日(日) 終了</span><br>
+                    はんどくり〜む <span style="font-size: 1.2rem; font-weight: bold;">?? - ??</span> 米子高専
+                </li>
+            </ul>
+        </section>
+<!--
+        <section id="standings">
+            <h2>📊 星取表・順位表</h2>
+            <div class="iframe-container">
+                <iframe src="https://docs.google.com/spreadsheets/d/e/XXXXXX/pubhtml?widget=true&amp;headers=false"></iframe>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; text-align: right; margin-top: 5px;">※数値は試合終了後に自動更新されます</p>
+        </section>
+-->
+        <section id="schedule">
+            <h2>📅 試合日程（全6節）</h2>
+            
+            <div class="section-nav" style="margin-bottom: 15px; font-size: 0.9rem;">
+                <a href="#section1">第1節</a> | <a href="#section2">第2節</a> | <a href="#section3">第3節</a> | <a href="#section4">第4節</a> | <a href="#section5">第5節</a> | <a href="#section6">第6節</a>
+            </div>
+
+            <div id="section1" style="margin-bottom: 20px; border-bottom: 2px dashed #ddd; padding-bottom: 10px;">
+                <h3 style="font-size: 1.1rem; color: #2c5282;">▽ 第1節（7月5日）</h3>
+                <ul class="match-list">
+                    <li><span class="match-badge">10:00</span> 弓ヶ浜クラブ — 島根大学</li>
+                    <li><span class="match-badge">11:15</span> 三光 — 米子高専</li>
+                    <li><span class="match-badge">12:30</span> 境港クラブ — 鳥取環境大学</li>
+                    <li><span class="match-badge">13:45</span> はんどくり〜む — 米子高専</li>
+                </ul>
+            </div>
+
+            <div id="section2" style="margin-bottom: 20px; border-bottom: 2px dashed #ddd; padding-bottom: 10px;">
+                <h3 style="font-size: 1.1rem; color: #2c5282;">▽ 第2節（9月6日）</h3>
+                <ul class="match-list">
+                    <li><span class="match-badge">09:45</span> はんどくり〜む — 島根大学</li>
+                    <li><span class="match-badge">11:00</span> 三光 — 弓ヶ浜クラブ</li>
+                    <li><span class="match-badge">12:15</span> 鳥取環境大学 — 米子高専</li>
+                </ul>
+            </div>
+
+            <div id="section3" style="margin-bottom: 20px; border-bottom: 2px dashed #ddd; padding-bottom: 10px;">
+                <h3 style="font-size: 1.1rem; color: #2c5282;">▽ 第3節（10月25日）</h3>
+                <ul class="match-list">
+                    <li><span class="match-badge">09:45</span> 境港クラブ — 米子高専</li>
+                    <li><span class="match-badge">11:00</span> 三光 — はんどくり〜む</li>
+                    <li><span class="match-badge">12:15</span> 弓ヶ浜クラブ — 鳥取環境大学</li>
+                    <li><span class="match-badge">13:30</span> 境港クラブ — 島根大学</li>
+                </ul>
+            </div>
+
+            <div id="section4" style="margin-bottom: 20px; border-bottom: 2px dashed #ddd; padding-bottom: 10px;">
+                <h3 style="font-size: 1.1rem; color: #2c5282;">▽ 第4節（12月6日）</h3>
+                <ul class="match-list">
+                    <li><span class="match-badge">09:45</span> 弓ヶ浜クラブ — 米子高専</li>
+                    <li><span class="match-badge">11:00</span> 三光 — 境港クラブ</li>
+                    <li><span class="match-badge">12:15</span> 弓ヶ浜クラブ — はんどくり〜む</li>
+                    <li><span class="match-badge">13:30</span> 島根大学 — 鳥取環境大学</li>
+                </ul>
+            </div>
+
+            <div id="section5" style="margin-bottom: 20px; border-bottom: 2px dashed #ddd; padding-bottom: 10px;">
+                <h3 style="font-size: 1.1rem; color: #2c5282;">▽ 第5節（2027年1月24日）</h3>
+                <ul class="match-list">
+                    <li><span class="match-badge">09:45</span> 三光 — 島根大学</li>
+                    <li><span class="match-badge">11:00</span> 境港クラブ — はんどくり〜む</li>
+                </ul>
+            </div>
+
+            <div id="section6" style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.1rem; color: #2c5282;">▽ 第6節（3月7日）</h3>
+                <ul class="match-list">
+                    <li><span class="match-badge">09:45</span> はんどくり〜む — 鳥取環境大学</li>
+                    <li><span class="match-badge">11:00</span> 米子高専 — 島根大学</li>
+                    <li><span class="match-badge">12:15</span> 三光 — 鳥取環境大学</li>
+                    <li><span class="match-badge">13:30</span> 境港クラブ — 弓ヶ浜クラブ</li>
+                </ul>
+            </div>
+        </section>        
+
+        <section id="teams">
+            <h2>🤾‍♂️ チーム情報・選手一覧</h2>
+            <p>日本海リーグに参戦しているチームの一覧です。（各チームの詳細や選手名鑑ページへリンク予定）</p>
+            <ul class="team-list">
+                <li>🔹 <strong>三光ハンドボール部</strong>（地元企業）</li>
+                <li>🔹 <strong>弓ヶ浜クラブ</strong>（社会人）</li>
+                <li>🔹 <strong>境港クラブ</strong>（社会人）</li>
+                <li>🔹 <strong>はんどくり～む</strong>（社会人）</li>
+                <li>🔹 <strong>鳥取大学</strong>（鳥大ハンド部）</li>
+                <li>🔹 <strong>公立鳥取環境大学</strong>（環境大ハンド部）</li>
+                <li>🔹 <strong>米子高専</strong>（米子工業高等専門学校）</li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>
